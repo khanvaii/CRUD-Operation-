@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DigiTask.Models.Employee>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@Html.Raw(TempData["InsertMsg"])
+@Html.Raw(TempData["UpdateMsg"])
+@Html.Raw(TempData["DeleteMsg"])
+
+<p>
+    @Html.ActionLink("Create New", "AddEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.empName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empDepart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empSalary)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.empName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empDepart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empSalary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id }) |
+               |
+                @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
